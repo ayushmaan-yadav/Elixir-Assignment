@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>ElixirMaualPaymentRequired</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ElixirMaualPaymentRequired</shortDescription>
+        <value>Last Payment Needs to be done Manually. Not Covered in Subscription.</value>
+    </labels>
+    <labels>
+        <fullName>ElixirNavigateToRecordPage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ElixirNavigateToRecordPage</shortDescription>
+        <value>Navigating Back to Account Record Page. Please wait and do not refresh the page.</value>
+    </labels>
+    <labels>
+        <fullName>ElixirRedirectingToPaymentPage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ElixirRedirectingToPaymentPage</shortDescription>
+        <value>Redirecting to Payment Page, Please wait..</value>
+    </labels>
+    <labels>
+        <fullName>Elixir_Subscription_Already_Created</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Subscription Already Created</shortDescription>
+        <value>Subscription already created</value>
+    </labels>
+    <labels>
+        <fullName>Elixir_Subscription_Created_Toast</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Subscription Created Toast</shortDescription>
+        <value>Subscription Created</value>
+    </labels>
+    <labels>
+        <fullName>Elixir_Subscription_Main_Screen</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Subscription Main Screen</shortDescription>
+        <value>Select a Payment Method</value>
+    </labels>
+    <labels>
+        <fullName>Elixir_Subscription_Not_Created_Toast</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Subscription Not Created Toast</shortDescription>
+        <value>Subscription not Created, Some Error Occurred</value>
+    </labels>
+    <labels>
+        <fullName>Elixir_Subscription_Validation_Screen</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Subscription Validation Screen</shortDescription>
+        <value>You do not have any payment method setup for current account. Proceed to create payment method and make first payment</value>
+    </labels>
+</CustomLabels>

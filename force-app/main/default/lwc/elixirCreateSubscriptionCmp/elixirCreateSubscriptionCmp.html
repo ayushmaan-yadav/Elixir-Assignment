@@ -1,0 +1,58 @@
+<template>
+    <template if:true={isShowModal}>
+    <lightning-card title="Create Subscription">
+        <div class="slds-is-relative">
+         <!-- spinner -->
+        <template if:true={isLoaded}>
+                <lightning-spinner alternative-text="Loading...">
+                </lightning-spinner>
+        </template>
+        <div class="slds-m-around_medium">
+            <p>{content}</p>
+        </div>
+        <template if:true={payInfOpt}>
+            <div class="slds-m-around_medium">
+            <lightning-radio-group name="radioGroup"
+            options={paymentOptions}
+            onchange={handleRadioChange}
+            value={value}
+            type="radio"></lightning-radio-group>
+        </div>
+        </template>
+        <br/>
+        <div class="slds-align_absolute-center">
+
+            <template if:true={extSubsId}>
+                <lightning-button label="Cancel" onclick={handleCancel}></lightning-button>
+            </template>
+
+            <template if:true={validationScreen}>
+            <lightning-button-group>
+
+                <template if:false={payInfOpt}>
+                    <lightning-button label="Cancel" onclick={handleCancel}></lightning-button>
+                </template>
+                <template if:false={extSubsId}>
+                    <lightning-button label="Proceed with new Payment Method" variant="brand" onclick={newPaymentMeth}></lightning-button>
+                </template>
+
+            </lightning-button-group>
+        </template>
+
+        <template if:true={mainScreen}>
+            <lightning-button-group>
+                <template if:true={payInfOpt}>
+                    <lightning-button label="Use New Payment Method" onclick={newPaymentMeth}></lightning-button>
+                </template>
+            <template if:false={extSubsId}>
+                <lightning-button label="Proceed" variant="brand" onclick={handleSubscribe}></lightning-button>
+            </template>
+            </lightning-button-group>
+        </template>
+        </div>
+    
+</div>
+    </lightning-card>
+</template>
+
+</template>

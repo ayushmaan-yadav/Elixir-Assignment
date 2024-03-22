@@ -1,0 +1,29 @@
+.THIS input#input-1839 {
+    width: 35%;
+}
+.THIS .header{
+    display:flex;
+    margin-bottom: 1px;
+    padding: 0px 5px;
+    padding-top: 5px;
+    background-color:#f3f2f2;
+    cursor: pointer;
+}
+.THIS .header .header_name{
+    width:100%;
+    text-align:center;
+}
+.THIS .header lightning-output-field .slds-form-element__label{
+    display:none !important;
+}
+.THIS .btn{
+    text-align: right;
+    margin: 10px 0;
+}
+.THIS .center{
+    text-align:center;
+}
+.THIS .message{
+    margin:25px;
+    color:red;
+}

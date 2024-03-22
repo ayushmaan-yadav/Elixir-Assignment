@@ -1,0 +1,17 @@
+<aura:component implements="force:hasRecordId,force:lightningQuickAction" controller="SyncClaimDetailController">
+    <aura:handler name = "init" value = "{!this}" action = "{!c.onInit}"/>
+<aura:html tag="style">
+    .slds-modal__container {
+     max-width: 32rem;
+    }
+    .slds-modal__content {
+    height: 180px !important;
+    max-height: 180px !important;
+    }
+</aura:html>    
+     <div class=" slds-theme_default">   
+        <lightning:notificationsLibrary aura:id="notifLib"/>
+        <h1 class="slds-text-align_center">Please wait. . .We are working on your claim syncing.</h1>
+    </div>  
+    
+</aura:component>

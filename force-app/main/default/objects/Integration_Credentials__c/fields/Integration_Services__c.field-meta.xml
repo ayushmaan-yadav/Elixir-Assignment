@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Integration_Services__c</fullName>
+    <description>This field will indicate to which integration the record belongs.</description>
+    <externalId>false</externalId>
+    <label>Integration Services</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>CHC</fullName>
+                <default>false</default>
+                <label>CHC</label>
+            </value>
+            <value>
+                <fullName>NewCrop</fullName>
+                <default>false</default>
+                <label>NewCrop</label>
+            </value>
+            <value>
+                <fullName>Square</fullName>
+                <default>false</default>
+                <label>Square</label>
+            </value>
+            <value>
+                <fullName>ClaimMD</fullName>
+                <default>false</default>
+                <label>ClaimMD</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

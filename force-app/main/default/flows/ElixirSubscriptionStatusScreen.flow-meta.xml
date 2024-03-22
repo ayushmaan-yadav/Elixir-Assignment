@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <decisions>
+        <description>Check Payment Due After Subscription</description>
+        <name>Check_Payment_Due_After_Subscription</name>
+        <label>Check Payment Due After Subscription</label>
+        <locationX>182</locationX>
+        <locationY>134</locationY>
+        <defaultConnector>
+            <targetReference>NoPaymentRequired</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>All Covered</defaultConnectorLabel>
+        <rules>
+            <name>Manual_Payment_Required</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>AmountDueAfterLastPayment</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>NoOfInstallmentLeft</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>3.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>recordId.Elixir_External_Subscription_ID__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Subscription_Status</targetReference>
+            </connector>
+            <label>Manual Payment Required</label>
+        </rules>
+    </decisions>
+    <description>Show if any Manual Payment Need to be Made.</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Amount Dure After Last Payment From Subscription</description>
+        <name>AmountDueAfterLastPayment</name>
+        <dataType>Currency</dataType>
+        <expression>MOD({!recordId.ElixirSuite__Total_Balance_Due__c},{!recordId.ElixirSuite__Installment_Amount__c})</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <description>No Of Installment Left for the Subscription to end.</description>
+        <name>NoOfInstallmentLeft</name>
+        <dataType>Number</dataType>
+        <expression>FLOOR({!recordId.ElixirSuite__Total_Balance_Due__c}/{!recordId.ElixirSuite__Installment_Amount__c})</expression>
+        <scale>2</scale>
+    </formulas>
+    <interviewLabel>ElixirSubscriptionStatusScreen {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>ElixirSubscriptionStatusScreen</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <name>NoPaymentRequired</name>
+        <label>NoPaymentRequired</label>
+        <locationX>314</locationX>
+        <locationY>242</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <showFooter>false</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Subscription_Status</name>
+        <label>Subscription Status</label>
+        <locationX>50</locationX>
+        <locationY>242</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>StatusMessage</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 20px; color: rgb(224, 7, 26);&quot;&gt;{!$Label.ElixirMaualPaymentRequired}&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>false</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_Payment_Due_After_Subscription</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>recordId</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>ElixirSuite__Payment_Plan__c</objectType>
+    </variables>
+</Flow>

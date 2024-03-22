@@ -1,0 +1,86 @@
+<aura:component access="global" controller="ClaimErrorController"  implements="force:appHostable,force:hasRecordId,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader">
+    <aura:attribute name="claimId" type="String" access="public" />
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="visible" type="Boolean" default="false"/>
+    <aura:attribute name="showSpinner" type="Boolean" default="true"/>
+    <aura:attribute name="allErrors" type="Object[]"/>
+    <aura:attribute name="claim" type="object"/>
+    <aura:attribute name="lineItems" type="List"/>
+    <aura:attribute name="totalCount" type="String" default="0"/>
+    <aura:attribute name="updateButtonCount" type="String" default="0"/>
+    <aura:handler name="init" value="{!this}" action="{!c.myAction}" />
+    <aura:if isTrue="{!v.showSpinner}">
+        <lightning:spinner alternativeText="Loading" size="medium" />
+    </aura:if>
+    <aura:if isTrue="{!v.visible}">
+        <lightning:card>
+            <div class="slds-grid">
+                <div class="slds-col slds-size_11-of-12 center">
+                    <b>This Claim is not submitted due to bad data in these fields. Please update the fields with correct data and send Claim to Clearing house again.</b>
+                </div>
+                <div class="slds-col slds-size_1-of-12">
+                    <lightning:buttonicon iconName="utility:refresh" size="medium" variant ="neutral" onclick="{!c.myAction}" class="btncss"/>
+                </div>
+            </div>
+            <br/>
+            <div class="slds-grid">
+                <aura:iteration items="{!v.allErrors}" var="error">
+                    <aura:if isTrue="{!error.key == v.recordId}">
+                        <div class="slds-col slds-size_6-of-6">
+                            <lightning:recordEditForm aura:id="recordEditForm" objectApiName="ElixirSuite__Claim__c" recordId="{!v.recordId}">
+                                <div class="header" id="claim" onclick="{!c.toggle}">
+                                    <span id="claim" class="">
+                                        <lightning:icon class="slds-hide" aura:id="claim" iconName="utility:chevrondown" size="x-small" />
+                                        <lightning:icon class="slds-show" aura:id="claim" iconName="utility:chevronup" size="x-small"/>
+                                    </span>
+                                    <span id="claim" class="header_name">
+                                        <lightning:outputField fieldName="Name"/>
+                                    </span>
+                                </div>
+                                <div class="slds-show slds-p-around--medium" aura:id="claim">
+                                    <aura:iteration items="{!error.value}" var="err">
+                                        <div class="slds-grid">
+                                            <div class="slds-col slds-size_1-of-2">
+                                                <aura:if isTrue="{!err.errorField != 'ElixirSuite__Total_Charge__c'}">
+                                                    <lightning:inputField fieldName="{!err.errorField}" disabled="true"/>
+                                                    <aura:set attribute="else">
+                                                        <lightning:inputField fieldName="{!err.errorField}"  disabled="true"/>
+                                                    </aura:set>
+                                                </aura:if>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-2">
+                                                <div class="slds-truncate message" title="{!err.errorMessage}">{!err.errorMessage}</div>
+                                            </div>
+                                        </div>
+                                    </aura:iteration>
+                                    <!--<div class="btn">
+                                        <lightning:button variant="neutral" label="Update" title="Update claim" type="submit" onclick="{!c.handleSuccess}"/>
+                                    </div>-->
+                                </div>
+                            </lightning:recordEditForm>
+                        </div>
+                    </aura:if>
+                </aura:iteration>
+            </div>
+            <aura:iteration items="{!v.allErrors}" var="error" indexVar="idx">
+                <aura:if isTrue="{!error.key != v.recordId}">
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col slds-size_6-of-6">
+                            <c:ClaimErrorCmpLineItem error="{!error}"/>
+                        </div>
+                    </div>
+                </aura:if>
+            </aura:iteration>
+        </lightning:card>
+        <aura:set attribute="else">
+            <div class="slds-grid">
+                <div class="slds-col slds-size_11-of-12 center">
+                    <b>No errors found</b>
+                </div>
+                <div class="slds-col slds-size_1-of-12">
+                    <lightning:buttonicon iconName="utility:refresh" size="medium" variant ="neutral" onclick="{!c.myAction}" class="btncss"/>
+                </div>
+            </div>
+        </aura:set>
+    </aura:if>    
+</aura:component>

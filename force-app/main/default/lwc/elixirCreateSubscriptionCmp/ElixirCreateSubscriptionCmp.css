@@ -1,0 +1,19 @@
+.group-footer { 
+    background-color: #f1f2f3;
+    /*  position: absolute;*/
+    z-index: 1;/*9*/
+    bottom: 0px;
+    width: 100%;
+    border-radius: 0 0 5px 5px;
+    padding: 11px 15px;
+    text-align: right;
+    left: 0;
+}
+.parentCSS { 
+    height:100%;
+}
+.childCSS { 
+    width: 100%;
+    background-color: rgb(243, 242, 242);
+    height: 100%;
+}

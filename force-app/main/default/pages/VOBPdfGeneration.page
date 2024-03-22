@@ -1,0 +1,263 @@
+<apex:page controller="VOBPdfGenerationHelper" renderAs="pdf">
+    <apex:includeScript value="/support/console/53.0/integration.js"/>
+    
+    <html>
+        <head>
+            <style>
+                .vf-header {
+                padding-left: 20px;
+                background-color: lightgrey;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                font-weight: bold;
+                }
+                .vf-input-element {
+                margin-left: 20px;
+                }
+            </style>
+        </head>
+        <body>
+            <apex:form >
+                <apex:param name="recId" value="{!$CurrentPage.parameters.recId}"/>
+                <head>
+                    <head>
+                    </head>
+                    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap" rel="stylesheet"/>
+                    <style type="text/css">
+                        body {
+                        margin: 0;
+                        padding: 0;
+                        }
+                        @media(max-width: 576px) {
+                        .main-table {
+                        width: 100% !important;
+                        }
+                        }  
+                    </style>
+                </head>
+                <body>
+                    <table class="main-table" border="0" cellspacing="0" cellpadding="0"
+                           style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; font-family: 'Open Sans', sans-serif;  width: 720px; margin: 10px auto; background-color: #fff; font-size: 12px; color: #333; box-shadow: 0px 0px 2px 0px #ccc;">
+                        <thead>
+                            <tr>
+                                <th style="background-color: #fff;">
+                                    <table  border="0" cellspacing="0" cellpadding="0" style="width: 680px; text-align: left; margin:0 auto 20px;">
+                                        <tbody>
+                                            <tr>
+                                                <td style="height:10px;"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h3>
+                                                        <span style="font-size:16px;"> AETNA</span><span style="float:right;"></span>
+                                                    </h3>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                             
+                                                <td style="">
+                                                    <table  border="0" cellspacing="0" cellpadding="0" style="background-color:#dee;border:1px solid #ccc;
+                                                                                                              margin:15px auto;width:680px;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="height:5px;" colspan="4"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="width:5px;"></td>
+                                                                <td>Insured Name:</td>
+                                                                <td style="width:5px;"></td>
+                                                                <td>{!eligibilityDemograpic.InsuredFName} , {!eligibilityDemograpic.InsuredLName}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="height:5px;" colspan="4"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="width:5px;"></td>
+                                                                <td>Ploicy#:</td>
+                                                                <td style="width:5px;"></td>
+                                                                <td>{!eligibilityDemograpic.policy}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="height:5px;" colspan="4"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="width:5px;"></td>
+                                                                <td>Group #:</td>
+                                                                <td style="width:5px;"></td>
+                                                                <td>{!eligibilityDemograpic.insuredGroup}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="height:5px;" colspan="4"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="width:5px;"></td>
+                                                                <td>Plan #:</td>
+                                                                <td style="width:5px;"></td>
+                                                                <td>{!eligibilityDemograpic.plan}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="width:5px;"></td>
+                                                                <td>Insured DOB:</td>
+                                                                <td style="width:5px;"></td>
+                                                                <td>{!eligibilityDemograpic.insuredDOB}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="width:5px;"></td>
+                                                                <td>Insured Gender:</td>
+                                                                <td style="width:5px;"></td>
+                                                                <td>{!eligibilityDemograpic.insuredGender}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="width:5px;"></td>
+                                                                <td>Insured Address:</td>
+                                                                <td style="width:5px;"></td>
+                                                                <td>{!eligibilityDemograpic.insuredAdress}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="width:5px;"></td>
+                                                                <td>Plan Begin:</td>
+                                                                <td style="width:5px;"></td>
+                                                                <td>{!eligibilityDemograpic.planBegin}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="height:5px;" colspan="4"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <table class="main-table" border="0" cellspacing="0" cellpadding="0"
+                           style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; font-family: 'Open Sans', sans-serif;  width: 720px; margin: 10px auto; background-color: #fff; font-size: 12px; color: #333; box-shadow: 0px 0px 2px 0px #ccc
+                                  ;border:1px solid #12f">
+                        <tbody>
+                            <apex:repeat value="{!parentIterationWrapper}" var="parentSobjBenifit" id="theBenifit">                                
+                                <table class="main-table" border="0" cellspacing="0" cellpadding="0"
+                                       style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; font-family: 'Open Sans', sans-serif;  width: 720px; margin: 10px auto; background-color: #fff; font-size: 12px; color: #333; box-shadow: 0px 0px 2px 0px #ccc
+                                              ;border:1px solid #12f">
+                                    <tr>
+                                        <td>
+                                            <h3 style="margin:0 0 5px 30px;font-size:18px;">
+                                                  {!parentSobjBenifit.benefit_description}  
+                                            </h3>
+                                        </td>
+                                    </tr>
+                                </table>                                                               
+                                <apex:repeat value="{!parentSobjBenifit.lst_benefit_level_code}" var="sObjBenifit" id="theBenifit_1">                                   
+                                    <apex:repeat value="{!sObjBenifit.mapOfCodeAndData}" var="mapKeys" id="theBenifit_2">                                        
+                                        <tr>
+                                            <td style="">
+                                                <apex:outputPanel rendered="{!NOT(ISNULL(mapKeys))}">
+                                                    <h3 style="text-decoration:underline;font-size:18px;margin:10px 30px;">
+                                                        {!mapKeys}  
+                                                    </h3> 
+                                                </apex:outputPanel>
+                                            </td>
+                                        </tr>
+                                        <table class="main-table" border="0" cellspacing="0" cellpadding="0"
+                                               style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; font-family: 'Open Sans', sans-serif;  width: 660px; margin: 5px auto;
+                                                      font-size: 12px; color: #333; box-shadow: 0px 0px 2px 0px #ccc; background-color: #f1f2f3;
+                                                      ;border:1px solid #eee"> 
+                                            <apex:repeat value="{!sObjBenifit.mapOfCodeAndData[mapKeys]}" var="thirdChild" id="theBenifit_2">                                                                                               
+                                                <tr>
+                                                    <td style="">
+                                                        <apex:outputPanel rendered="{!NOT(ISNULL(thirdChild.insurance_plan))}">
+                                                            <tr>
+                                                                <td style="">
+                                                                    <h3 style="text-decoration:underline;font-size:18px;margin:10px 30px;">
+                                                                         {!thirdChild.insurance_plan}
+                                                                        
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                        </apex:outputPanel>                                                        
+                                                        <tr>
+                                                            <td style="">
+                                                                <apex:outputPanel rendered="{!NOT(ISNULL(thirdChild.benefit_notes))}">
+                                                                    <h3 style="text-decoration:underline;font-size:14px;font-weight:300px;margin:10px 30px;">
+                                                                           {!thirdChild.benefit_notes}  
+                                                                    </h3>
+                                                                </apex:outputPanel>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style=" ">
+                                                                <apex:outputPanel rendered="{!NOT(ISNULL(thirdChild.date_of_last_update))}">
+                                                                    <h3 style="text-decoration:underline;font-size:14px;margin:10px 30px;">
+                                                                          Date of last update   {!thirdChild.date_of_last_update}  
+                                                                    </h3>
+                                                                </apex:outputPanel>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="">
+                                                                <apex:outputPanel rendered="{!NOT(ISNULL(thirdChild.insurance_type_description))}">
+                                                                    <h3 style="text-decoration:underline;font-size:18px;margin:10px 30px;">
+                                                                          {!thirdChild.insurance_type_description}  {!thirdChild.benefit_coverage_description} {!thirdChild.benefit_amount} {!thirdChild.benefit_period_code_toText}
+                                                                        
+                                                                    </h3>
+                                                                </apex:outputPanel>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="">
+                                                                <apex:outputPanel rendered="{!NOT(ISNULL(thirdChild.entity_description))}">
+                                                                    <h3 style="text-decoration:underline;font-size:18px;margin:10px 30px;">
+                                                                           {!thirdChild.entity_description}  : {!thirdChild.insurance_plan} 
+                                                                        
+                                                                    </h3>
+                                                                </apex:outputPanel>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="">
+                                                                <apex:outputPanel rendered="{!NOT(ISNULL(thirdChild.entity_addr_1))}">
+                                                                    <h3 style="text-decoration:underline;font-size:18px;margin:10px 30px;">
+                                                                           {!thirdChild.entity_addr_1}  : {!thirdChild.insurance_plan} 
+                                                                        
+                                                                    </h3>
+                                                                </apex:outputPanel>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="">
+                                                                <apex:outputPanel rendered="{!NOT(ISNULL(thirdChild.entity_city))}">
+                                                                    <h3 style="text-decoration:underline;font-size:18px;margin:10px 30px;">
+                                                                          {!thirdChild.entity_city},{!thirdChild.entity_state} {!thirdChild.entity_zip}
+                                                                        
+                                                                    </h3>
+                                                                </apex:outputPanel>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="">
+                                                                <apex:outputPanel rendered="{!(ISNULL(thirdChild.insurance_type_description))}">
+                                                                     <h3 style="text-decoration:underline;font-size:18px;margin:10px 30px;">
+                                                                           {!thirdChild.benefit_coverage_description}  {!thirdChild.benefit_amount}  {!thirdChild.benefit_percent}  {!thirdChild.benefit_period_code_toText} 
+                                                                    </h3> 
+                                                                    
+                                                                </apex:outputPanel>
+                                                            </td>
+                                                        </tr>
+                                                    </td>
+                                                </tr>
+                                                
+                                            </apex:repeat>
+                                        </table>
+                                    </apex:repeat>
+                                </apex:repeat>
+                            </apex:repeat>
+                        </tbody>
+                    </table>                                        
+                                     
+                </body>
+            </apex:form>
+        </body>
+    </html>
+</apex:page>

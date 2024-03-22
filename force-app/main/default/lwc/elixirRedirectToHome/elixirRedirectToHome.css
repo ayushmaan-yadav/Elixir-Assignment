@@ -1,0 +1,37 @@
+.container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    height: 100vh; /* Set container height to full viewport height */
+}
+
+.message {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px; /* Add margn to create space between message and spinner */
+}
+
+.spinner-container {
+    text-align: center; /* Center the spinner */
+}
+
+.custom-spinner {
+    border: 14px solid rgba(0, 0, 0, 0.1); /* Increased border thickness for visibility */
+    border-left-color: #ff0000; /* Red color for the spinner */
+    border-radius: 50%;
+    width: 50px; /* Increased width */
+    height: 50px; /* Increased height */
+    margin-top: 20px;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

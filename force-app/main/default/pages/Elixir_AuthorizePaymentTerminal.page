@@ -1,0 +1,69 @@
+<apex:page controller="Elixir_AuthPaymentTerminalController">
+    <script>
+        // Function to click the button on page load
+        window.onload = function() {
+            showLoader();
+            setTimeout(function() {
+                var button = document.getElementById('btnContinue');                
+                if(button) {
+                    button.click();
+                }
+            }, 1500);
+        };
+
+        // Function to show loader
+        function showLoader() {
+            document.getElementById('loader').style.display = 'block';
+        }
+
+        // Function to hide loader
+        function hideLoader() {
+            document.getElementById('loader').style.display = 'none';
+        }
+    </script>
+    <style>
+        .centered-div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid black; /* Optional: Add border for visualization */
+            padding: 20px; /* Optional: Add padding for content */
+            text-align: center; /* Center-align content */
+        }
+
+        .loader {
+            display: none;
+            border: 8px solid #ff0000; /* Red color */
+            border-top: 8px solid transparent; /* Hide top border */
+            border-radius: 50%;
+            width: 20px; /* Adjust size as needed */
+            height: 20px; /* Adjust size as needed */
+            animation: spin 2s linear infinite;
+            margin-top: 10px; /* Add margin between loader and heading */
+        	margin-left: 100px;
+        }
+
+        h4 {
+            margin-bottom: 10px; /* Add margin between heading and loader */
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <html>
+        <body>
+            <div class="centered-div">
+                <form method="post" action="{!endpointURL}" id="formAuthorizeNetTestPage" name="formAuthorizeNetTestPage" >
+                    <input type="hidden" name="token" value="{!token}" />
+                    <h4>{!navigationText}</h4>
+                    <div id="loader" class="loader"></div> <!-- Loader -->
+                    <button id="btnContinue" style="display: none;"></button>
+                </form>
+            </div>
+        </body>
+    </html>
+
+</apex:page>

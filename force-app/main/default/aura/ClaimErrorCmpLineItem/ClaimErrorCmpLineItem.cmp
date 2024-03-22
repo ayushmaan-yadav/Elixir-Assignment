@@ -1,0 +1,29 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader" access="global" >
+    <aura:attribute name="error" type="Object"/>
+    <lightning:recordEditForm aura:id="recordEditForm" objectApiName="ElixirSuite__Claim_Line_Items__c" recordId="{!v.error.key}">  
+        <div class="header" id="lineItem" onclick="{!c.toggle}">
+            <span id="lineItem" class="">
+                <lightning:icon class="slds-hide" aura:id="lineItem" iconName="utility:chevrondown" size="x-small" />
+                <lightning:icon class="slds-show" aura:id="lineItem" iconName="utility:chevronup" size="x-small"/>
+            </span>
+            <span id="lineItem" class="header_name">
+                <lightning:outputField fieldName="Name"/>
+            </span>
+        </div>
+        <div class="slds-show slds-p-around--medium" aura:id="lineItem">
+            <aura:iteration items="{!v.error.value}" var="err">
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning:inputField fieldName="{!err.errorField}" disabled="true"/>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <div class="slds-truncate message" title="{!err.errorMessage}">{!err.errorMessage}</div>
+                    </div>
+                </div>
+            </aura:iteration>
+            <!--<div class="btn">
+                <lightning:button variant="neutral" label="Update" title="Update line item" type="submit" onclick="{!c.handleSuccess}"/>
+            </div>-->
+        </div>
+    </lightning:recordEditForm>
+</aura:component>

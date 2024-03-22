@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Elixir_Active__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Fields Contains If the Credentials Are Active Or Not</description>
+    <externalId>false</externalId>
+    <label>Active</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

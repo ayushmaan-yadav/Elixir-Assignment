@@ -1,0 +1,32 @@
+<template>
+    <div class="slds-align_absolute-center container">
+        <lightning-card>
+            <div class="slds-text-heading_large slds-m-around_medium" slot="title">
+                <h1>Cancel Subscription</h1>
+            </div>
+            <template if:true={isLoading}>
+                <div class="slds-m-around_medium">
+                    <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+                </div>
+            </template>
+            <template if:false={isLoading}>
+                <div class="slds-m-around_large">
+                    <p class="slds-m-bottom_large custom-paragraph">{outputText}</p>
+                </div>
+                <div class="slds-align_absolute-center slds-m-around_medium" slot="footer">
+                    <template if:true={showButtons}>
+                        <template if:true={showButtonGroup}>
+                            <lightning-button-group>
+                                <lightning-button label="Cancel" onclick={handleCancel} class="slds-button_large"></lightning-button>
+                                <lightning-button variant="brand" label="Sure" onclick={handleSure} class="slds-button_large"></lightning-button>
+                            </lightning-button-group>
+                        </template>
+                        <template if:true={showOkay}>
+                            <lightning-button variant="brand" label="Okay" onclick={handleOkay} class="slds-button_large"></lightning-button>
+                        </template>
+                    </template>
+                </div>
+            </template>
+        </lightning-card>
+    </div>
+</template>
